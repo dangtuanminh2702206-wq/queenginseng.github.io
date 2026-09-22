@@ -26,7 +26,7 @@ export default function ProductPage() {
     "@type": "Product",
     name: `${g8Product.name} – ${g8Product.subtitle}`,
     description: `${g8Product.legalName}, quy cách ${g8Product.unitsPerBox} gói × ${g8Product.unitWeightGrams} g, khối lượng tịnh ${g8Product.netWeightGrams} g.`,
-    image: ["https://dangtuanminh2702206-wq.github.io/queenginseng.github.io/images/products/g8/g8-open-box.webp"],
+    image: ["https://dangtuanminh2702206-wq.github.io/queenginseng.github.io/images/products/g8/g8-open-box-clean.webp"],
     sku: undefined,
     brand: { "@type": "Brand", name: "Queen Ginseng Vietnam" },
     offers: { "@type": "Offer", price: g8Product.price, priceCurrency: g8Product.currency },
@@ -52,7 +52,7 @@ export default function ProductPage() {
               <p className="mt-5 text-sm font-semibold tracking-[0.08em] text-[#6B7C75]">{g8Product.legalName}</p>
               <h1 className="mt-3 font-serif text-[clamp(2.8rem,5vw,4.8rem)] leading-[1.05] tracking-[-0.03em]">{g8Product.name}</h1>
               <p className="mt-3 text-xl text-[#587067]">{g8Product.subtitle}</p>
-              <p className="mt-7 text-3xl font-semibold">{formatVnd(g8Product.price)}</p>
+              <p className="price mt-7 text-3xl font-semibold">{formatVnd(g8Product.price)}</p>
               <div className="mt-7 grid grid-cols-2 gap-3"><div className="rounded-xl border border-[#073D2B]/10 bg-white p-4"><p className="text-xs text-[#6B7C75]">Quy cách</p><p className="mt-1 font-semibold">30 gói × 15 g</p></div><div className="rounded-xl border border-[#073D2B]/10 bg-white p-4"><p className="text-xs text-[#6B7C75]">Khối lượng tịnh</p><p className="mt-1 font-semibold">450 g</p></div></div>
               <ProductPurchase />
               <div className="mt-7 border-t border-[#073D2B]/10 pt-5 text-sm leading-6 text-[#6B7C75]"><p>SKU: chưa xác nhận</p><p>Hạn sử dụng: 18 tháng kể từ ngày sản xuất</p><p>Tình trạng hàng: [...]</p></div>

@@ -38,7 +38,7 @@ Sử dụng đúng bảy khóa `qgv-demo-users-v1`, `qgv-demo-session-v1`, `qgv-
 ## 8. Logo và hình ảnh
 
 - Logo thật: `public/images/brand/queen-ginseng-logo.png`; bản crop trung thành dùng trên header/favicon.
-- G8: `public/images/products/g8/g8-open-box.webp`; gallery đã sẵn kiến trúc nhiều ảnh nhưng hiện chỉ có một ảnh đúng quy cách được công khai.
+- G8 đang dùng: `public/images/products/g8/g8-open-box-clean.webp`; đã cắt bỏ hàng thông tin Sunart phía trên bằng thao tác crop từ ảnh gốc, không chỉnh sửa nội dung bao bì. File `g8-open-box.webp` được giữ lại để đối chiếu; gallery đã sẵn kiến trúc nhiều ảnh nhưng hiện chỉ có một ảnh đúng quy cách được công khai.
 - Dấu ấn thương hiệu: ảnh trong `public/images/brand-awards/2026/`, tách khỏi hồ sơ chất lượng.
 - QR: `public/images/payment/mb-bank-qr.png`, giữ nguyên nội dung.
 - G7: `public/images/future/g7/preview.webp`, asset tương lai, không xuất hiện trong catalog.
@@ -53,6 +53,13 @@ Sử dụng đúng bảy khóa `qgv-demo-users-v1`, `qgv-demo-session-v1`, `qgv-
 ## 10. SEO và khả năng truy cập
 
 Đã có metadata, canonical, Open Graph, logo favicon, robots, sitemap, nhãn tiếng Việt, skip link, focus state, aria-label và trạng thái sao chép.
+
+## 10.1. Nâng cấp giao diện
+
+- Đã áp dụng design system Premium Botanical Minimal Editorial tại `design-system/queen-ginseng-vietnam/MASTER.md`.
+- Giữ Arial cho nội dung, Cambria/Georgia cho tiêu đề và đúng palette xanh–ivory–gold.
+- Chuẩn hóa nút/touch target tối thiểu 44 px, focus-visible, trạng thái nhấn, khoảng trắng, card, bóng đổ và chuyển động nhẹ có hỗ trợ reduced motion.
+- Nâng cấp hero, dải thông tin tin cậy, card minh bạch, header desktop/mobile và footer; không thêm claim hoặc dữ liệu sản phẩm mới.
 
 ## 11. Kiểm tra
 

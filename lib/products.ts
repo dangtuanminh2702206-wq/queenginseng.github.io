@@ -47,7 +47,7 @@ export const g8Product: Product = {
   unitWeightGrams: 15,
   netWeightGrams: 450,
   shelfLifeMonths: 18,
-  images: [{ src: "/images/products/g8/g8-open-box.webp", alt: "Hộp Sâm Nữ Hoàng G8 mở nắp cùng các gói trà sâm hòa tan" }],
+  images: [{ src: "/images/products/g8/g8-open-box-clean.webp", alt: "Hộp Sâm Nữ Hoàng G8 mở nắp cùng các gói trà sâm hòa tan" }],
   ingredients: [
     "Maltodextrin",
     "Bột sâm nữ hoàng",
@@ -103,4 +103,3 @@ export const g8Product: Product = {
 export const publicProducts = [g8Product];
 
 // Future products – not public: G5, G6, G7.
-
