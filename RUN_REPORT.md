@@ -66,6 +66,7 @@ Sử dụng đúng bảy khóa `qgv-demo-users-v1`, `qgv-demo-session-v1`, `qgv-
 - TypeScript: đạt.
 - ESLint: đạt sau khi dọn import thừa.
 - Production build/static export: đạt, 16 tuyến được tạo tĩnh.
+- GitHub Pages: đã chuyển sang nguồn GitHub Actions; website công khai nhận đúng static export thay vì trang README.
 - Rà chuỗi G8 cũ và claim y tế trong mã giao diện: không tìm thấy.
 - Định dạng giá: 480.000 ₫; 2 hộp = 960.000 ₫.
 
