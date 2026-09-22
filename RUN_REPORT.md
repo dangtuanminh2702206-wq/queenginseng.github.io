@@ -1,65 +1,75 @@
-# Queen Ginseng Vietnam — Run report
+# Queen Ginseng Vietnam — Báo cáo chạy
 
-## Nguồn dữ liệu G8
+## 1. Phạm vi hoàn thành
 
-- Dữ liệu công khai của G8 được tập trung tại `lib/products.ts`.
-- Giá: 480.000 ₫/hộp.
-- Quy cách: 30 gói × 15 g; khối lượng tịnh 450 g.
-- SKU để `null` vì chưa được xác nhận.
-- Public catalog hiện chỉ có G8. G5, G6, G7 không được hiển thị.
+Website giữ phong cách Premium Botanical và tiếp tục từ code hiện có. Public catalog chỉ hiển thị G8. Đã bổ sung tài khoản thử nghiệm, đơn hàng demo, giới thiệu một cấp, hoa hồng 5%, sổ giao dịch, rút tiền demo và trang quản trị dữ liệu cục bộ.
 
-## Phân loại tài liệu
+## 2. Tuyến trang
 
-### A. Hồ sơ sản phẩm G8
+- `/` — homepage bán G8.
+- `/san-pham/bot-tra-sam-nu-hoang-g8` — trang sản phẩm.
+- `/gio-hang`, `/thanh-toan` — giỏ hàng và tạo đơn demo.
+- `/dang-nhap`, `/dang-ky` — tài khoản demo.
+- `/tai-khoan`, `/tai-khoan/don-hang`, `/tai-khoan/gioi-thieu`, `/tai-khoan/hoa-hong`, `/tai-khoan/rut-tien`.
+- `/demo-admin` — quản trị cục bộ, có nhãn DEMO ADMIN / LOCAL DATA ONLY.
 
-- `public/docs/g8/ho-so-bot-tra-sam-nu-hoang-g8.pdf`
-- Gồm bản tự công bố số 04/QUEEN GINSENG/2026, tiêu chuẩn nhà sản xuất số 15/TCSX-TSNHG8/2026, mẫu nhãn và kết quả kiểm nghiệm Eurofins.
-- Được liên kết tại homepage và mục “Hồ sơ sản phẩm” trên trang G8.
+## 3. Dữ liệu G8
 
-### B. Nghiên cứu nguyên liệu
+Nguồn duy nhất là `lib/products.ts`: BỘT TRÀ SÂM NỮ HOÀNG G8; 480.000 ₫/hộp; 30 gói × 15 g; 450 g; hạn sử dụng 18 tháng; SKU `null`. Không có G5/G6/G7 trong catalog.
 
-- `public/docs/research/tai-lieu-tham-khao-nghien-cuu-sam-nu-hoang.pdf`
-- `public/docs/research/phieu-kiem-nghiem-tinh-chat-sam-nu-hoang.pdf`
-- Được trình bày tách khỏi hồ sơ G8, có ghi rõ kết quả chỉ áp dụng cho mẫu thử.
+## 4. Giới thiệu và hoa hồng
 
-### C. Dấu ấn thương hiệu
+`lib/referral-config.ts` đặt `commissionRate = 0.05`. Quan hệ chỉ một cấp và người giới thiệu được gắn một lần khi đăng ký. Tự dùng mã của chính mình bị chặn với thông báo yêu cầu. Một hộp 480.000 ₫ tạo 24.000 ₫ hoa hồng chờ duyệt; hai hộp tạo 48.000 ₫.
 
-- Ảnh sự kiện và chứng nhận tại `public/images/brand-awards/2026/`.
-- Hiển thị như dấu ấn thương hiệu ngày 19/09/2026, không xếp vào hồ sơ chất lượng sản phẩm.
+Trạng thái hoa hồng: `PENDING`, `AVAILABLE`, `PAID`, `CANCELLED`. Chỉ đơn `COMPLETED` mới được quản trị duyệt sang khả dụng.
 
-### D. Tin tức / kiến thức bên ngoài
+## 5. Ví và rút tiền
 
-- Bài Người Đưa Tin về sâm Ngọc Linh được dẫn bằng link gốc.
-- Không dùng bài này làm bằng chứng cho Sâm Nữ Hoàng hoặc G8.
+Sổ giao dịch có `COMMISSION_PENDING`, `COMMISSION_RELEASE`, `COMMISSION_CANCEL`, `WITHDRAWAL_REQUEST`, `WITHDRAWAL_PAID`. Số dư được suy ra từ hoa hồng và yêu cầu rút, không lưu dưới dạng một số dư tùy ý. Rút tiền chỉ là yêu cầu demo, không chuyển tiền thật.
 
-## Asset khác
+## 6. Đơn hàng và thanh toán
 
-- Ảnh G8 hiện tại: `public/images/products/g8/g8-open-box.webp`.
-- G7 được lưu tại `public/images/future/g7/preview.webp` với trạng thái future product; không xuất hiện trong catalog public.
-- QR doanh nghiệp: `public/images/payment/mb-bank-qr.png`; chỉ hiện khi chọn chuyển khoản tại checkout.
+Đơn demo có mã `QGV-DEMO-*`, sản phẩm, số lượng, đơn giá, tổng tiền, người giới thiệu, phương thức và trạng thái. Trạng thái: `PENDING → CONFIRMED → SHIPPING → COMPLETED`; có `CANCELLED` và `RETURNED`. COD và QR MB Bank đều không tự xác nhận thanh toán.
 
-## Cart và checkout
+## 7. Lưu trữ demo
 
-- Cart dùng `localStorage`, đơn giá 480.000 ₫.
-- 1 hộp = 480.000 ₫; 2 hộp = 960.000 ₫.
-- Checkout có COD và chuyển khoản, nhưng không tạo đơn hoặc tự xác nhận giao dịch.
+Sử dụng đúng bảy khóa `qgv-demo-users-v1`, `qgv-demo-session-v1`, `qgv-demo-orders-v1`, `qgv-demo-referrals-v1`, `qgv-demo-commissions-v1`, `qgv-demo-wallet-v1`, `qgv-demo-withdrawals-v1`. Nút đặt lại chỉ xóa nhóm khóa này.
 
-## Dữ liệu còn cần cung cấp
+## 8. Logo và hình ảnh
 
-- Hotline bán hàng, email khách hàng, Zalo, Facebook, TikTok.
-- Tình trạng tồn kho.
-- Phí giao hàng và ngưỡng miễn phí.
-- Chính sách đổi trả, bảo mật và điều khoản bán hàng.
-- Chính sách NPP/đại lý/CTV.
-- SKU chính thức.
+- Logo thật: `public/images/brand/queen-ginseng-logo.png`; bản crop trung thành dùng trên header/favicon.
+- G8: `public/images/products/g8/g8-open-box.webp`; gallery đã sẵn kiến trúc nhiều ảnh nhưng hiện chỉ có một ảnh đúng quy cách được công khai.
+- Dấu ấn thương hiệu: ảnh trong `public/images/brand-awards/2026/`, tách khỏi hồ sơ chất lượng.
+- QR: `public/images/payment/mb-bank-qr.png`, giữ nguyên nội dung.
+- G7: `public/images/future/g7/preview.webp`, asset tương lai, không xuất hiện trong catalog.
+- Ảnh lễ trao danh hiệu có tên doanh nghiệp khác không được đưa lên website.
 
-## Ảnh cần bổ sung
+## 9. Tài liệu
 
-- Ảnh thương mại mặt trước, mặt sau, đáy hộp và cận cảnh nhãn G8.
-- Ảnh tách nền hoặc ảnh chụp studio G8 nếu cần thay mockup hiện tại.
+- Hồ sơ G8: `public/docs/g8/ho-so-bot-tra-sam-nu-hoang-g8.pdf`.
+- Nghiên cứu: hai PDF tại `public/docs/research/`, có cảnh báo phạm vi mẫu thử.
+- Tin ngoài về sâm Ngọc Linh luôn được ghi rõ là nguồn tham khảo ngoài, không dùng làm bằng chứng cho Sâm Nữ Hoàng.
 
-## TODO
+## 10. SEO và khả năng truy cập
 
-- Kết nối backend tạo đơn và xác nhận thanh toán khi có yêu cầu.
-- Chỉ bật dữ liệu tồn kho trong structured data sau khi được xác nhận.
-- Hoàn thiện các placeholder `[...]` sau khi nhận dữ liệu chính thức.
+Đã có metadata, canonical, Open Graph, logo favicon, robots, sitemap, nhãn tiếng Việt, skip link, focus state, aria-label và trạng thái sao chép.
+
+## 11. Kiểm tra
+
+- TypeScript: đạt.
+- ESLint: đạt sau khi dọn import thừa.
+- Production build/static export: đạt, 16 tuyến được tạo tĩnh.
+- Rà chuỗi G8 cũ và claim y tế trong mã giao diện: không tìm thấy.
+- Định dạng giá: 480.000 ₫; 2 hộp = 960.000 ₫.
+
+## 12. Dữ liệu còn cần cung cấp
+
+Hotline, email khách hàng, Zalo, Facebook, TikTok; tồn kho; phí giao hàng; ngưỡng miễn phí; chính sách đổi trả/bảo mật; chính sách đại lý; SKU; thời gian ghi nhận và giữ hoa hồng; mức rút tối thiểu; điều kiện đơn đầu tiên.
+
+## 13. Ảnh còn cần
+
+Ảnh thương mại chính thức mặt trước, mặt sau, đáy hộp và cận cảnh nhãn G8. Hiện không nhân bản hoặc bịa thêm góc ảnh.
+
+## 14. Giới hạn và bước chuyển production
+
+Đây là demo cục bộ, không có xác thực thật, backend, database, webhook hay chi trả. Kế hoạch chuyển đổi nằm trong `PRODUCTION_MIGRATION.md`; giá, hoa hồng, quyền hưởng và số dư phải được máy chủ tính lại, không tin dữ liệu trình duyệt.

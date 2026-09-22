@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, FileCheck2, Leaf } from "lucide-react";
 
 import { ProductPurchase } from "@/components/product-purchase";
+import { ProductGallery } from "@/components/product-gallery";
 import { SiteHeader } from "@/components/site-header";
 import { company } from "@/lib/company";
 import { g8Product } from "@/lib/products";
@@ -13,6 +13,7 @@ import { assetPath, formatVnd } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Sâm Nữ Hoàng G8 – Trà Sâm Hòa Tan | Queen Ginseng Vietnam",
   description: "Thông tin Sâm Nữ Hoàng G8 – Trà Sâm Hòa Tan, quy cách 30 gói × 15 g, khối lượng tịnh 450 g và hồ sơ sản phẩm.",
+  alternates: { canonical: "/san-pham/bot-tra-sam-nu-hoang-g8" },
 };
 
 function BulletList({ items }: { items: string[] }) {
@@ -25,7 +26,7 @@ export default function ProductPage() {
     "@type": "Product",
     name: `${g8Product.name} – ${g8Product.subtitle}`,
     description: `${g8Product.legalName}, quy cách ${g8Product.unitsPerBox} gói × ${g8Product.unitWeightGrams} g, khối lượng tịnh ${g8Product.netWeightGrams} g.`,
-    image: [assetPath(g8Product.images[0].src)],
+    image: ["https://dangtuanminh2702206-wq.github.io/queenginseng.github.io/images/products/g8/g8-open-box.webp"],
     sku: undefined,
     brand: { "@type": "Brand", name: "Queen Ginseng Vietnam" },
     offers: { "@type": "Offer", price: g8Product.price, priceCurrency: g8Product.currency },
@@ -45,10 +46,7 @@ export default function ProductPage() {
 
         <section className="section-space bg-[#F7F2E7]">
           <div className="container-wide grid items-start gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
-            <div>
-              <div className="relative aspect-square overflow-hidden rounded-[2rem] border border-[#073D2B]/10 bg-white shadow-[0_28px_70px_rgba(5,44,32,0.1)]"><Image src={assetPath(g8Product.images[0].src)} alt={g8Product.images[0].alt} fill priority sizes="(max-width: 1024px) 100vw, 54vw" className="object-cover" /></div>
-              <div className="mt-4 rounded-2xl border border-dashed border-[#073D2B]/20 bg-white/70 p-5 text-sm leading-6 text-[#6B7C75]">Ảnh hiện tại: hộp mở và gói G8 đúng quy cách 30 gói × 15 g. TODO: bổ sung ảnh mặt sau, đáy hộp và ảnh cận cảnh nhãn chính thức.</div>
-            </div>
+            <ProductGallery product={g8Product} />
             <div className="lg:sticky lg:top-28">
               <p className="eyebrow">Sản phẩm chủ lực</p>
               <p className="mt-5 text-sm font-semibold tracking-[0.08em] text-[#6B7C75]">{g8Product.legalName}</p>

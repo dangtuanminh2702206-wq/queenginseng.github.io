@@ -1,29 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import { Leaf, Menu } from "lucide-react";
+import Image from "next/image";
+import { Menu, UserRound } from "lucide-react";
 
 import { CartButton } from "@/components/cart-button";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { useDemo } from "@/components/use-demo";
+import { assetPath } from "@/lib/site";
 
 const links = [
   ["Sản phẩm", "/#san-pham"],
   ["Sâm Nữ Hoàng", "/#sam-nu-hoang"],
   ["Minh bạch", "/#minh-bach"],
   ["Dấu ấn", "/#dau-an"],
-  ["Kiến thức", "/#kien-thuc"],
+  ["Giới thiệu 5%", "/tai-khoan/gioi-thieu"],
   ["Đại lý", "/#dai-ly"],
   ["Liên hệ", "/#lien-he"],
 ];
 
 export function SiteHeader() {
+  const { user } = useDemo();
   return (
     <header className="sticky top-0 z-40 border-b border-[#073D2B]/10 bg-[#F7F2E7]/95 backdrop-blur-xl">
       <div className="mx-auto flex h-[76px] max-w-[1440px] items-center justify-between gap-5 px-5 sm:px-8 lg:px-12 xl:px-16">
         <Link href="/" className="flex shrink-0 items-center gap-2.5 text-[#052C20]" aria-label="Queen Ginseng Vietnam - Trang chủ">
-          <span className="flex size-9 items-center justify-center rounded-full border border-[#C8A34A]/50 bg-[#073D2B]"><Leaf className="size-4 text-[#D5C388]" /></span>
-          <span className="font-serif text-lg leading-none tracking-[-0.02em] sm:text-xl">Queen Ginseng</span>
+          <Image src={assetPath("/images/brand/queen-ginseng-logo-crop.png")} alt="Queen Ginseng Việt Nam" width={126} height={58} className="h-12 w-auto object-contain" priority />
         </Link>
         <nav className="hidden items-center gap-5 xl:flex" aria-label="Điều hướng chính">
           {links.map(([label, href]) => <Link key={label} href={href} className="text-[13px] font-medium text-[#294D40] transition-colors hover:text-[#C8A34A]">{label}</Link>)}
@@ -31,6 +34,7 @@ export function SiteHeader() {
         <div className="ml-auto flex items-center gap-2 xl:ml-0">
           <Button asChild className="hidden h-10 rounded-full bg-[#073D2B] px-5 text-white hover:bg-[#052C20] md:inline-flex"><Link href="/san-pham/bot-tra-sam-nu-hoang-g8">Đặt mua</Link></Button>
           <CartButton />
+          <Button asChild variant="outline" size="icon" className="rounded-full border-[#073D2B]/20 bg-white/50 text-[#073D2B]" aria-label={user ? "Mở tài khoản" : "Đăng nhập"}><Link href={user ? "/tai-khoan" : "/dang-nhap"}><UserRound className="size-4" /></Link></Button>
         </div>
         <Sheet>
           <SheetTrigger asChild><Button variant="outline" size="icon" className="rounded-full border-[#073D2B]/20 bg-transparent text-[#073D2B] xl:hidden" aria-label="Mở trình đơn"><Menu /></Button></SheetTrigger>

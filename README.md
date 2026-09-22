@@ -11,6 +11,8 @@ Frontend homepage thương mại điện tử cho **Công ty Cổ phần Queen G
 - Giao diện 100% tiếng Việt
 - Responsive cho desktop và mobile
 - Các dữ liệu chưa được xác nhận được giữ ở dạng `[...]`
+- Tài khoản, đơn hàng, giới thiệu một cấp, hoa hồng và rút tiền đang ở chế độ demo bằng `localStorage`
+- Trang quản trị thử nghiệm: `/demo-admin`
 
 ## Chạy cục bộ
 
@@ -18,6 +20,14 @@ Frontend homepage thương mại điện tử cho **Công ty Cổ phần Queen G
 npm install
 npm run dev
 ```
+
+Kiểm tra bản tĩnh:
+
+```bash
+npm run build
+```
+
+Không dùng dữ liệu demo cho vận hành thật. Xem `PRODUCTION_MIGRATION.md` trước khi kết nối backend.
 
 ## GitHub Pages
 
