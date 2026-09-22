@@ -48,4 +48,4 @@ next-env.d.ts
 /outputs/
 /vite.local.config.ts
 /work/
-
+/tmp/
