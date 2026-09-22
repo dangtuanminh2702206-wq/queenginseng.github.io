@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../vendor/shadcn-tailwind-4.13.0.css";
+
+:root {
+  --background: #f7f2e7;
+  --foreground: #052c20;
+  --card: #ffffff;
+  --card-foreground: #052c20;
+  --popover: #ffffff;
+  --popover-foreground: #052c20;
+  --primary: #073d2b;
+  --primary-foreground: #ffffff;
+  --secondary: #eee8dc;
+  --secondary-foreground: #073d2b;
+  --muted: #ece7dc;
+  --muted-foreground: #587067;
+  --accent: #c8a34a;
+  --accent-foreground: #052c20;
+  --destructive: #b42318;
+  --border: #d8d1c3;
+  --input: #d8d1c3;
+  --ring: #c8a34a;
+  --radius: 0.875rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 5px);
+  --font-sans: Arial, "Segoe UI", sans-serif;
+  --font-serif: Cambria, Georgia, "Times New Roman", serif;
+}
+
+* { border-color: var(--border); }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: Arial, "Segoe UI", sans-serif; text-rendering: optimizeLegibility; }
+::selection { background: #c8a34a; color: #052c20; }
+.font-serif { font-family: Cambria, Georgia, "Times New Roman", serif; }
+.container-wide { width: min(100% - 2.5rem, 1280px); margin-inline: auto; }
+.section-space { padding-block: clamp(4.5rem, 8vw, 8rem); }
+.eyebrow { color: #997b33; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+.section-title { margin-top: 1rem; max-width: 770px; font-family: Cambria, Georgia, "Times New Roman", serif; font-size: clamp(2.5rem, 5vw, 4.75rem); line-height: 1.12; letter-spacing: -0.02em; color: #052c20; }
+.section-copy { margin-top: 1.25rem; max-width: 650px; color: #587067; font-size: 1rem; line-height: 1.8; }
+.section-heading-row { display: flex; align-items: end; justify-content: space-between; gap: 2rem; }
+.product-card { overflow: hidden; border: 1px solid rgba(7,61,43,.12); border-radius: 1.75rem; background: white; transition: transform .35s ease, box-shadow .35s ease; }
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 25px 65px rgba(5,44,32,.09); }
+.goal-card { min-height: 330px; border: 1px solid rgba(7,61,43,.1); border-radius: 1.5rem; background: rgba(255,255,255,.7); padding: 1.75rem; transition: background .3s ease, transform .3s ease; }
+.goal-card:hover { background: white; transform: translateY(-3px); }
+.botanical-grid { background-image: linear-gradient(rgba(7,61,43,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(7,61,43,.045) 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(to right, transparent, black 45%, black); }
+.skip-link { position: fixed; left: 1rem; top: -4rem; z-index: 100; border-radius: 999px; background: #c8a34a; color: #052c20; padding: .75rem 1rem; font-weight: 700; transition: top .2s; }
+.skip-link:focus { top: 1rem; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes soft-in { from { opacity: 0; transform: scale(.985); } to { opacity: 1; transform: scale(1); } }
+.animate-rise { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+.animate-soft-in { animation: soft-in .8s .12s cubic-bezier(.2,.7,.2,1) both; }
+@media (min-width: 640px) { .container-wide { width: min(100% - 4rem, 1280px); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
