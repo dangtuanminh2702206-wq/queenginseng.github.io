@@ -5,6 +5,8 @@ import { ArrowRight, BadgeCheck, BookOpen, FileCheck2, Leaf, PackageCheck, Quote
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 
+const basePath = process.env.GITHUB_ACTIONS === "true" ? "/queenginseng.github.io" : "";
+
 const benefits = [
   { icon: Sprout, title: "Nguồn nguyên liệu thiên nhiên", text: "Định hướng phát triển từ dược liệu Việt." },
   { icon: PackageCheck, title: "Tiện lợi mỗi ngày", text: "Quy cách gọn gàng, phù hợp nhịp sống hiện đại." },
@@ -50,7 +52,7 @@ export default function Home() {
             <div className="relative animate-soft-in lg:pl-4">
               <div className="absolute -left-5 top-7 z-10 hidden rounded-full border border-[#C8A34A]/35 bg-[#F7F2E7]/95 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#7C652D] shadow-sm sm:block">8 gói × 3 g</div>
               <div className="relative aspect-square overflow-hidden rounded-[2.5rem] border border-[#073D2B]/10 bg-[#EAE3D5] shadow-[0_35px_90px_rgba(5,44,32,0.14)]">
-                <Image src="/images/g8-box-crop.jpg" alt="Hộp Queen Ginseng G8 Trà sâm hòa tan" fill priority sizes="(max-width: 1024px) 100vw, 54vw" className="object-cover object-center transition-transform duration-700 hover:scale-[1.025]" />
+                <Image src={`${basePath}/images/g8-box-crop.jpg`} alt="Hộp Queen Ginseng G8 Trà sâm hòa tan" fill priority sizes="(max-width: 1024px) 100vw, 54vw" className="object-cover object-center transition-transform duration-700 hover:scale-[1.025]" />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#052C20]/40 to-transparent p-7 pt-24 text-white"><p className="text-sm font-medium tracking-[0.14em]">QUEEN GINSENG G8</p><p className="mt-1 text-sm text-white/80">Trà sâm hòa tan · 24 g</p></div>
               </div>
             </div>
@@ -68,7 +70,7 @@ export default function Home() {
             <div className="section-heading-row"><div><p className="eyebrow">Sản phẩm nổi bật</p><h2 className="section-title">Được chọn cho nhịp sống mỗi ngày</h2></div><Button asChild variant="link" className="hidden p-0 text-[#073D2B] md:inline-flex"><Link href="#g8">Xem chi tiết <ArrowRight /></Link></Button></div>
             <div className="mt-12">
               <article className="product-card group grid overflow-hidden lg:grid-cols-[1.15fr_0.85fr]">
-                <div className="relative aspect-square overflow-hidden bg-[#EEE8DC] lg:aspect-auto lg:min-h-[620px]"><Image src="/images/g8-box-crop.jpg" alt="Queen Ginseng G8 Trà sâm hòa tan" fill sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover transition duration-700 group-hover:scale-[1.025]" /><span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#073D2B]">Sản phẩm chủ lực</span></div>
+                <div className="relative aspect-square overflow-hidden bg-[#EEE8DC] lg:aspect-auto lg:min-h-[620px]"><Image src={`${basePath}/images/g8-box-crop.jpg`} alt="Queen Ginseng G8 Trà sâm hòa tan" fill sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover transition duration-700 group-hover:scale-[1.025]" /><span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#073D2B]">Sản phẩm chủ lực</span></div>
                 <div className="flex flex-col justify-between gap-10 p-7 sm:p-10 lg:p-12"><div><p className="text-sm text-[#6B7C75]">Trà sâm hòa tan</p><h3 className="mt-2 font-serif text-4xl leading-tight text-[#052C20] sm:text-5xl">Queen Ginseng G8</h3><p className="mt-5 leading-7 text-[#587067]">Sản phẩm trọng tâm của Queen Ginseng Vietnam, phát triển theo định hướng tiện lợi và phù hợp với nhịp sống hiện đại.</p><div className="mt-7 grid grid-cols-3 gap-2 text-center text-sm"><span className="rounded-xl bg-[#F7F2E7] px-3 py-4">8 gói/hộp</span><span className="rounded-xl bg-[#F7F2E7] px-3 py-4">3 g/gói</span><span className="rounded-xl bg-[#F7F2E7] px-3 py-4">Tổng 24 g</span></div></div><div><p className="text-sm text-[#6B7C75]">Giá</p><p className="mt-1 text-xl font-semibold text-[#073D2B]">[...]</p><Button type="button" size="lg" className="mt-6 h-12 rounded-full bg-[#073D2B] px-7 text-white hover:bg-[#052C20]">Đặt mua sản phẩm <ArrowRight /></Button></div></div>
               </article>
             </div>
@@ -83,7 +85,7 @@ export default function Home() {
 
         <section id="g8" className="section-space overflow-hidden bg-[#073D2B] text-white scroll-mt-24">
           <div className="container-wide grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-            <div className="relative order-2 lg:order-1"><div className="relative aspect-square overflow-hidden rounded-[2rem] bg-[#E8E2D6] shadow-[0_30px_80px_rgba(0,0,0,0.2)]"><Image src="/images/g8-box-crop.jpg" alt="Hộp Queen Ginseng G8" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" /></div><div className="absolute -bottom-6 right-5 rounded-2xl border border-white/15 bg-[#052C20]/95 p-5 shadow-xl backdrop-blur sm:right-10"><p className="text-xs uppercase tracking-[0.15em] text-[#D5C388]">Quy cách hiện tại</p><p className="mt-2 text-xl font-semibold">24 g · 8 gói × 3 g</p></div></div>
+            <div className="relative order-2 lg:order-1"><div className="relative aspect-square overflow-hidden rounded-[2rem] bg-[#E8E2D6] shadow-[0_30px_80px_rgba(0,0,0,0.2)]"><Image src={`${basePath}/images/g8-box-crop.jpg`} alt="Hộp Queen Ginseng G8" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" /></div><div className="absolute -bottom-6 right-5 rounded-2xl border border-white/15 bg-[#052C20]/95 p-5 shadow-xl backdrop-blur sm:right-10"><p className="text-xs uppercase tracking-[0.15em] text-[#D5C388]">Quy cách hiện tại</p><p className="mt-2 text-xl font-semibold">24 g · 8 gói × 3 g</p></div></div>
             <div className="order-1 lg:order-2"><p className="eyebrow !text-[#D5C388]">Sản phẩm tiêu biểu</p><h2 className="mt-5 font-serif text-[clamp(2.8rem,5vw,5rem)] leading-[1.02] tracking-[-0.035em]">Queen Ginseng G8</h2><p className="mt-4 text-xl text-white/75">Trà sâm hòa tan</p>
               <div className="mt-9 grid gap-3 sm:grid-cols-3">{["8 gói/hộp", "3 g/gói", "Tổng 24 g"].map((item) => <div key={item} className="rounded-xl border border-white/15 bg-white/[0.06] px-4 py-4 text-center text-sm font-medium">{item}</div>)}</div>
               <dl className="mt-9 divide-y divide-white/15 border-y border-white/15 text-sm"><div className="grid grid-cols-[130px_1fr] gap-4 py-4"><dt className="text-white/55">Thành phần</dt><dd>[...]</dd></div><div className="grid grid-cols-[130px_1fr] gap-4 py-4"><dt className="text-white/55">Công dụng</dt><dd>[...]</dd></div><div className="grid grid-cols-[130px_1fr] gap-4 py-4"><dt className="text-white/55">Giá bán</dt><dd>[...]</dd></div></dl>
