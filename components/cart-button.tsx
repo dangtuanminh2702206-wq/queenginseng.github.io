@@ -6,8 +6,8 @@ import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 
 import { useCart } from "@/components/cart-provider";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { g8Product } from "@/lib/products";
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { g8Product, productPack, productWeight } from "@/lib/products";
 import { assetPath, formatVnd } from "@/lib/site";
 
 export function CartButton() {
@@ -31,34 +31,33 @@ export function CartButton() {
           <div className="flex flex-1 flex-col p-6">
             <div className="flex gap-4">
               <div className="relative size-24 shrink-0 overflow-hidden rounded-xl bg-white">
-                <Image src={assetPath(g8Product.images[0].src)} alt={g8Product.images[0].alt} fill sizes="96px" className="object-cover" />
+                <Image src={assetPath(g8Product.images[0].src)} alt={g8Product.images[0].alt} fill sizes="96px" className="object-contain" />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="font-semibold text-[#052C20]">{g8Product.name}</p>
-                <p className="mt-1 text-sm text-[#587067]">30 gói × 15 g · 450 g</p>
+                <p className="mt-1 text-sm text-[#587067]">{productPack(g8Product)} · {productWeight(g8Product)}</p>
                 <p className="mt-2 font-semibold text-[#073D2B]">{formatVnd(g8Product.price)}</p>
               </div>
             </div>
             <div className="mt-6 flex items-center justify-between border-y border-[#073D2B]/10 py-4">
               <div className="flex items-center rounded-full border border-[#073D2B]/15 bg-white p-1">
-                <button onClick={() => setQuantity(quantity - 1)} className="grid size-9 place-items-center rounded-full hover:bg-[#F7F2E7]" aria-label="Giảm số lượng"><Minus className="size-4" /></button>
+                <button onClick={() => setQuantity(quantity - 1)} className="grid size-11 place-items-center rounded-full hover:bg-[#F7F2E7]" aria-label="Giảm số lượng"><Minus className="size-4" /></button>
                 <output className="w-10 text-center font-semibold" aria-live="polite">{quantity}</output>
-                <button onClick={() => setQuantity(quantity + 1)} className="grid size-9 place-items-center rounded-full hover:bg-[#F7F2E7]" aria-label="Tăng số lượng"><Plus className="size-4" /></button>
+                <button onClick={() => setQuantity(quantity + 1)} className="grid size-11 place-items-center rounded-full hover:bg-[#F7F2E7]" aria-label="Tăng số lượng"><Plus className="size-4" /></button>
               </div>
-              <button onClick={clear} className="inline-flex items-center gap-2 text-sm text-[#775E28] hover:text-[#052C20]"><Trash2 className="size-4" /> Xóa</button>
+              <button onClick={clear} className="inline-flex min-h-11 items-center gap-2 text-sm text-[#775E28] hover:text-[#052C20]"><Trash2 className="size-4" /> Xóa</button>
             </div>
             <div className="mt-auto space-y-4 pt-8">
-              <div className="flex items-center justify-between text-lg font-semibold"><span>Tạm tính</span><span>{formatVnd(total)}</span></div>
-              <p className="text-xs leading-5 text-[#6B7C75]">Phí giao hàng: [...] · Ngưỡng miễn phí: [...]</p>
-              <Button asChild className="h-12 w-full rounded-full bg-[#073D2B] text-white"><Link href="/thanh-toan">Tiếp tục thanh toán</Link></Button>
-              <Button asChild variant="outline" className="h-11 w-full rounded-full border-[#073D2B]/20 bg-transparent"><Link href="/gio-hang">Xem giỏ hàng</Link></Button>
+              <div className="flex items-center justify-between text-lg font-semibold"><span>Tạm tính tiền hàng</span><span>{formatVnd(total)}</span></div>
+              <p className="text-xs leading-5 text-[#6B7C75]">Chưa gồm phí vận chuyển. Phí giao hàng chưa xác nhận.</p>
+              <SheetClose asChild><Button asChild className="h-12 w-full rounded-full bg-[#073D2B] text-white"><Link href="/thanh-toan">Tiếp tục thanh toán</Link></Button></SheetClose>
+              <SheetClose asChild><Button asChild variant="outline" className="h-11 w-full rounded-full border-[#073D2B]/20 bg-transparent"><Link href="/gio-hang">Xem giỏ hàng</Link></Button></SheetClose>
             </div>
           </div>
         ) : (
-          <div className="grid flex-1 place-items-center p-8 text-center"><div><ShoppingBag className="mx-auto size-10 text-[#C8A34A]" /><p className="mt-4 text-sm text-[#587067]">Hãy thêm G8 vào giỏ để tiếp tục.</p><Button asChild className="mt-6 rounded-full bg-[#073D2B]"><Link href="/san-pham/bot-tra-sam-nu-hoang-g8">Xem sản phẩm G8</Link></Button></div></div>
+          <div className="grid flex-1 place-items-center p-8 text-center"><div><ShoppingBag className="mx-auto size-10 text-[#C8A34A]" /><p className="mt-4 text-sm text-[#587067]">Hãy thêm G8 vào giỏ để tiếp tục.</p><SheetClose asChild><Button asChild className="mt-6 rounded-full bg-[#073D2B]"><Link href="/san-pham/bot-tra-sam-nu-hoang-g8">Xem sản phẩm G8</Link></Button></SheetClose></div></div>
         )}
       </SheetContent>
     </Sheet>
   );
 }
-

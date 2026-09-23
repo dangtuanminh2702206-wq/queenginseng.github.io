@@ -14,8 +14,6 @@ const links = [
   ["Sản phẩm", "/#san-pham"],
   ["Sâm Nữ Hoàng", "/#sam-nu-hoang"],
   ["Minh bạch", "/#minh-bach"],
-  ["Dấu ấn", "/#dau-an"],
-  ["Giới thiệu 5%", "/tai-khoan/gioi-thieu"],
   ["Đại lý", "/#dai-ly"],
   ["Liên hệ", "/#lien-he"],
 ];
@@ -26,7 +24,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-[#073D2B]/10 bg-[#F7F2E7]/[0.96] shadow-[0_8px_30px_rgba(5,44,32,.035)] backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-3 px-5 sm:px-8 lg:px-12 xl:px-16">
         <Link href="/" className="flex min-h-11 shrink-0 items-center gap-2.5 rounded-lg text-[#052C20]" aria-label="Queen Ginseng Vietnam - Trang chủ">
-          <Image src={assetPath("/images/brand/queen-ginseng-logo-crop.png")} alt="Queen Ginseng Việt Nam" width={132} height={60} className="h-[50px] w-auto object-contain" priority />
+          <Image src={assetPath("/images/brand/queen-ginseng-logo-crop.png")} alt="Queen Ginseng Việt Nam" width={132} height={60} className="h-[58px] w-auto object-contain" priority />
         </Link>
         <nav className="hidden items-center gap-1 xl:flex" aria-label="Điều hướng chính">
           {links.map(([label, href]) => <Link key={label} href={href} className="group relative flex min-h-11 items-center rounded-full px-3 text-[13px] font-semibold text-[#294D40] transition-colors duration-200 hover:text-[#073D2B]"><span>{label}</span><span className="absolute inset-x-3 bottom-1.5 h-px origin-left scale-x-0 bg-[#C8A34A] transition-transform duration-200 group-hover:scale-x-100" aria-hidden="true" /></Link>)}

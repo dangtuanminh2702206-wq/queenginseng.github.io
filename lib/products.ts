@@ -102,4 +102,12 @@ export const g8Product: Product = {
 
 export const publicProducts = [g8Product];
 
+export function productPack(product: Product) {
+  return `${product.unitsPerBox} gói × ${product.unitWeightGrams} g`;
+}
+
+export function productWeight(product: Product) {
+  return `${product.netWeightGrams} g`;
+}
+
 // Future products – not public: G5, G6, G7.
