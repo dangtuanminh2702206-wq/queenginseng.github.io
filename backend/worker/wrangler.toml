@@ -1,0 +1,6 @@
+name = "queen-ginseng-order-gateway"
+main = "src/index.ts"
+compatibility_date = "2026-09-26"
+
+# Set these as Cloudflare Worker secrets. Never commit their values:
+# APPS_SCRIPT_URL, INTERNAL_KEY, RATE_LIMIT_SALT, ALLOWED_ORIGIN

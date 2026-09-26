@@ -116,3 +116,25 @@ Giữ design system `design-system/queen-ginseng-vietnam/MASTER.md`, áp dụng 
 ### Còn là demo và cần chủ website cung cấp
 
 Tài khoản, đơn hàng, hoa hồng, quản trị và rút tiền vẫn chỉ lưu trên từng trình duyệt, không xác thực thật. Cần hotline/email khách hàng, kênh tiếp nhận đại lý, phí và điều kiện giao hàng, đổi trả, bảo mật, tồn kho và ảnh sản phẩm nhiều góc được duyệt. Chỉ bật nhận đơn và hướng dẫn chuyển khoản sau khi có backend, quy trình xác nhận đơn/giao dịch và chính sách được chốt. QR doanh nghiệp vẫn là ảnh thật nên khách có thể quét nếu tự mở mục xem trước; cảnh báo không thay thế quy trình vận hành thật.
+
+## 16. Nền tảng nhận đơn Google Sheets — 26/09/2026
+
+### Đã thực hiện
+
+- Kiểm tra Google Sheet `Thông tin đặt hàng trên web Queen Ginseng`: giữ nguyên tab `Trang tính1`, tạo tab vận hành riêng và không có dữ liệu khách hàng cũ cần chuyển đổi.
+- Tạo các tab: `Products`, `Customers`, `Orders`, `OrderItems`, `InventoryTransactions`, `Payments`, `Refunds`, `Partners`, `Referrals`, `CommissionTransactions`, `WalletTransactions`, `WithdrawalRequests`, `Notifications`, `AnalyticsDaily`, `AuditLog`.
+- Đặt header, hàng tiêu đề cố định và filter cho các tab. G8 được khai báo trong `Products` với giá 480.000 VND, 30 gói, 15 g/gói, 450 g và trạng thái công khai.
+- Thêm `lib/commerce-api.ts` và `public/config/commerce.json`. Checkout giờ cho khách gửi yêu cầu mà không cần tài khoản demo, kiểm tra dữ liệu, giữ idempotency key khi thử lại và chỉ hiển thị mã đơn sau phản hồi hợp lệ của server.
+- Thêm `backend/worker/` làm lớp CORS và giới hạn tần suất trước Apps Script; secrets chỉ được giữ trên Cloudflare Worker/Apps Script, không nằm trong GitHub Pages.
+- Thêm `backend/apps-script/Code.gs`: kiểm tra dữ liệu, lấy giá G8 từ Sheet, khóa ghi đồng thời bằng `LockService`, chống ghi trùng theo idempotency key, lọc công thức Sheet và ghi Order/OrderItems/AuditLog theo cùng một luồng.
+
+### Trạng thái thật
+
+Chưa có Cloudflare Worker URL, Apps Script deployment URL hoặc secrets được cấu hình nên `ordersEnabled` đang là `false`. Website không nhận đơn thật và không hiển thị QR thúc đẩy chuyển tiền ở checkout. Các trang tài khoản, hoa hồng, ví, rút tiền và `/demo-admin` vẫn là dữ liệu demo cục bộ; chúng không được xem là dữ liệu vận hành.
+
+### Các việc tiếp theo cần cấu hình
+
+1. Tạo/triển khai Apps Script và Cloudflare Worker theo `backend/README.md`.
+2. Cập nhật URL Worker vào `public/config/commerce.json`, sau đó chạy một đơn thử tách biệt.
+3. Chốt email quản trị, tồn kho ban đầu, phí giao hàng, quy tắc hoàn tiền, xác thực tài khoản và quy tắc hoa hồng/rút tiền.
+4. Chỉ sau đó mới mở tài khoản thật, quản trị, thanh toán thủ công, email, ví và hoa hồng.
