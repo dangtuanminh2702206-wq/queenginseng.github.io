@@ -98,7 +98,7 @@ Hotline, email khách hàng, Zalo, Facebook, TikTok; tồn kho; phí giao hàng;
 - Gỡ dải thông tin lặp, ảnh G8 lặp và khối 5% lớn khỏi trang chủ. Phần hồ sơ và nghiên cứu ở homepage dẫn về đúng mục chi tiết của trang G8; giải thưởng, nghiên cứu nguyên liệu và bài báo ngoài vẫn được phân biệt rõ.
 - Trang G8 dùng ảnh `object-contain`, ẩn SKU `null`, bỏ tình trạng hàng chưa rõ; nội dung dài dùng `details/summary` thao tác được bằng bàn phím; bảng dinh dưỡng dùng bảng ngữ nghĩa.
 - Footer nhất quán. Kênh liên hệ và chính sách chưa xác nhận được ghi là đang cập nhật; không còn nút đăng ký đại lý dẫn đến placeholder.
-- Checkout ghi rõ bản trải nghiệm ở đầu trang. Khi chưa biết phí giao hàng, chỉ hiển thị **tạm tính tiền hàng**. QR thật nằm trong mục xem trước có cảnh báo ngay cạnh; trang không nhận tiền, không gửi đơn thật hoặc xác nhận chuyển khoản. Tài khoản/hoa hồng có cảnh báo dữ liệu cục bộ.
+- Checkout ghi rõ bản trải nghiệm ở đầu trang. Khi chưa biết phí giao hàng, chỉ hiển thị **tạm tính tiền hàng**. Từ giai đoạn nhận đơn Google Sheets, QR được ẩn khỏi checkout cho đến khi có luồng xác nhận giao dịch thật; trang không nhận tiền, không gửi đơn thật hoặc xác nhận chuyển khoản. Tài khoản/hoa hồng có cảnh báo dữ liệu cục bộ.
 
 ### UI/UX Pro Max đã ảnh hưởng thế nào
 
@@ -110,12 +110,12 @@ Giữ design system `design-system/queen-ginseng-vietnam/MASTER.md`, áp dụng 
 - `next build` với cấu hình GitHub Pages: đạt, 16 tuyến static export.
 - `node scripts/audit-export.mjs`: đạt, 371 tham chiếu nội bộ (trang, ảnh, PDF, neo), quét nội dung công khai, JSON-LD G8 và không bịa tồn kho/SKU.
 - Đo không tràn ngang ở 375, 390, 768, 1024, 1440 px trên homepage, trang G8, checkout.
-- Bấm trang chủ → G8, thêm giỏ, tăng lên hai hộp, giỏ → checkout; 1 hộp 480.000 ₫, 2 hộp 960.000 ₫. Tải trực tiếp trang G8 dưới base path thành công. QR tải được và cảnh báo xuất hiện khi mở mục xem trước.
+- Bấm trang chủ → G8, thêm giỏ, tăng lên hai hộp, giỏ → checkout; 1 hộp 480.000 ₫, 2 hộp 960.000 ₫. Tải trực tiếp trang G8 dưới base path thành công. Sau lần kiểm tra đó, QR đã được rút khỏi checkout cho đến khi luồng thanh toán vận hành thật được cấu hình.
 - Ảnh trước/sau đã được quan sát ở desktop và mobile trong lượt làm việc. Chưa đo Lighthouse hoặc kiểm toán WCAG tự động.
 
 ### Còn là demo và cần chủ website cung cấp
 
-Tài khoản, đơn hàng, hoa hồng, quản trị và rút tiền vẫn chỉ lưu trên từng trình duyệt, không xác thực thật. Cần hotline/email khách hàng, kênh tiếp nhận đại lý, phí và điều kiện giao hàng, đổi trả, bảo mật, tồn kho và ảnh sản phẩm nhiều góc được duyệt. Chỉ bật nhận đơn và hướng dẫn chuyển khoản sau khi có backend, quy trình xác nhận đơn/giao dịch và chính sách được chốt. QR doanh nghiệp vẫn là ảnh thật nên khách có thể quét nếu tự mở mục xem trước; cảnh báo không thay thế quy trình vận hành thật.
+Tài khoản, đơn hàng, hoa hồng, quản trị và rút tiền vẫn chỉ lưu trên từng trình duyệt, không xác thực thật. Cần hotline/email khách hàng, kênh tiếp nhận đại lý, phí và điều kiện giao hàng, đổi trả, bảo mật, tồn kho và ảnh sản phẩm nhiều góc được duyệt. Chỉ bật nhận đơn và hướng dẫn chuyển khoản sau khi có backend, quy trình xác nhận đơn/giao dịch và chính sách được chốt. QR doanh nghiệp đang được giữ làm asset nội bộ và chưa hiển thị trong checkout; không đưa khách vào tình huống chuyển tiền khi chưa có quy trình vận hành thật.
 
 ## 16. Nền tảng nhận đơn Google Sheets — 26/09/2026
 
