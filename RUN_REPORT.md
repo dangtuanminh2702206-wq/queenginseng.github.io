@@ -162,7 +162,8 @@ Bản trước chụp từ website công khai ở commit 0996d5c, bản sau từ
 
 - `bf377b1`: sửa tiếp nhận đơn, phục hồi ghi dở, storage, ví demo và regression tests.
 - `ba11f0d`: ảnh hỏng, sticky header, accessibility, SEO, screenshot và bài test trình duyệt/CI.
-- Chưa ghi kết luận deploy tại thời điểm viết mục này; sẽ kiểm tra GitHub Actions và website sau push. Không bật ordersEnabled.
+- Đã push ba commit trên; lần chạy Actions `36367710278` build thành công nhưng test chưa chạy do Node 22 không hỗ trợ `--test-isolation=none` (máy local dùng Node 24). Đã sửa npm test dùng `node --test` tiêu chuẩn và chạy lại; không bỏ qua test. Website cũ không bị thay bởi lượt deploy thất bại.
+- Sẽ kiểm tra lại Actions và bản public sau bản sửa tương thích CI; không bật ordersEnabled.
 
 ---
 
