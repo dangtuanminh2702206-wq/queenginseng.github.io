@@ -162,8 +162,13 @@ Bản trước chụp từ website công khai ở commit 0996d5c, bản sau từ
 
 - `bf377b1`: sửa tiếp nhận đơn, phục hồi ghi dở, storage, ví demo và regression tests.
 - `ba11f0d`: ảnh hỏng, sticky header, accessibility, SEO, screenshot và bài test trình duyệt/CI.
-- Đã push ba commit trên; lần chạy Actions `36367710278` build thành công nhưng test chưa chạy do Node 22 không hỗ trợ `--test-isolation=none` (máy local dùng Node 24). Đã sửa npm test dùng `node --test` tiêu chuẩn và chạy lại; không bỏ qua test. Website cũ không bị thay bởi lượt deploy thất bại.
-- Sẽ kiểm tra lại Actions và bản public sau bản sửa tương thích CI; không bật ordersEnabled.
+- `81c873b`: ghi báo cáo, bằng chứng kiểm tra và hướng dẫn các điều kiện mở bán.
+- Lần chạy Actions `36367710278` build thành công nhưng test chưa chạy do Node 22 không hỗ trợ `--test-isolation=none` (máy local dùng Node 24). Website cũ không bị thay bởi lượt deploy thất bại.
+- `ace2ad5`: sửa npm test dùng `node --test` tiêu chuẩn, chạy lại 27/27 test tại local; không bỏ qua test.
+- Đã push các commit trên. [Actions 36367891639](https://github.com/dangtuanminh2702206-wq/queenginseng.github.io/actions/runs/36367891639) tại commit `ace2ad53cb8b274e5b1b8a65e03eb22a5c5e6a84` hoàn tất **success**, bao gồm build, kiểm tra và deploy GitHub Pages.
+- Kiểm tra sau deploy trực tiếp website công khai: 12 route × 5 viewport = 60 lượt, không có lỗi tải trang, tràn ngang, lỗi giải mã ảnh hoặc pageerror được ghi nhận. Bằng chứng local tại `outputs/audit/live-after/` gồm JSON và screenshot desktop/mobile.
+- Bấm thêm G8 và tăng số lượng trực tiếp trên bản public: 480.000 ₫ → 960.000 ₫. Checkout hiện đúng cảnh báo không chuyển tiền, nút nhận đơn vô hiệu và không hiển thị QR. Config live giữ `ordersEnabled=false`, API URL trống. Không gửi đơn thử.
+- Ba PDF public trả HTTP 200 và chữ ký %PDF- hợp lệ; URL không tồn tại trả 404. Đây là kiểm tra tải file, không thay thế đối chiếu nội dung pháp lý. Bản cập nhật báo cáo sau kiểm tra chỉ thay tài liệu, không đổi code đã kiểm chứng.
 
 ---
 
