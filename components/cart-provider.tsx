@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useMemo, useSyncExternalStore } from "react";
 
-const STORAGE_KEY = "qgv-cart-v1";
+import { readCart, writeCart } from '@/lib/cart-store';
 
 type CartContextValue = {
   quantity: number;
@@ -23,22 +23,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         window.removeEventListener("qgv-cart-changed", callback);
       };
     },
-    () => {
-      const saved = Number(window.localStorage.getItem(STORAGE_KEY));
-      return Number.isFinite(saved) && saved > 0 ? Math.floor(saved) : 0;
-    },
+    readCart,
     () => 0,
   );
 
-  const setQuantity = (next: number) => {
-    const safe = Math.max(0, Math.min(99, Math.floor(next || 0)));
-    window.localStorage.setItem(STORAGE_KEY, String(safe));
-    window.dispatchEvent(new Event("qgv-cart-changed"));
-  };
+  const setQuantity = writeCart;
 
   const value = useMemo<CartContextValue>(() => ({
     quantity,
-    add: (amount = 1) => setQuantity(quantity + amount),
+    add: (amount = 1) => { if(Number.isInteger(amount)&&amount>0)setQuantity(readCart() + amount); },
     setQuantity,
     clear: () => setQuantity(0),
   }), [quantity]);
