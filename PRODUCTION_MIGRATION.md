@@ -1,6 +1,10 @@
 # Kế hoạch chuyển từ bản demo sang hệ thống thật
 
-## Trạng thái hiện tại
+## Trạng thái cập nhật 28/09/2026
+
+Đã có mã Worker + Apps Script cho bước tiếp nhận yêu cầu vào Google Sheets, nhưng chưa có deployment/API thật được xác minh. Website vẫn khóa nhận đơn. Chi tiết, điều kiện mở và rủi ro chia sẻ Sheet nằm trong `backend/README.md`. PostgreSQL/MySQL bên dưới là hướng phát triển dài hạn, không phải dịch vụ đã được triển khai.
+
+## Trạng thái bản demo
 
 Website là bản frontend tĩnh dành cho GitHub Pages. Tài khoản, phiên đăng nhập, đơn hàng, quan hệ giới thiệu, hoa hồng, sổ giao dịch và yêu cầu rút tiền đang được lưu bằng `localStorage` với tiền tố `qgv-demo-*`. Không có dữ liệu nào được gửi tới máy chủ, ngân hàng hoặc hệ thống vận hành thật.
 
