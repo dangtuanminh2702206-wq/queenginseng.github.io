@@ -24,7 +24,7 @@ export default function Home() {
   const productHref = `/san-pham/${g8Product.slug}`;
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <main className="min-h-screen overflow-x-clip bg-background text-foreground">
       <a href="#noi-dung" className="skip-link">Chuyển đến nội dung chính</a>
       <div className="bg-[#052C20] px-4 py-2.5 text-center text-[12px] font-semibold tracking-[0.1em] text-white sm:text-[13px]">{g8Product.name} · {productPack(g8Product)} · {productWeight(g8Product)}</div>
       <SiteHeader />

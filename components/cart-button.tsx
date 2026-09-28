@@ -43,13 +43,13 @@ export function CartButton() {
               <div className="flex items-center rounded-full border border-[#073D2B]/15 bg-white p-1">
                 <button onClick={() => setQuantity(quantity - 1)} className="grid size-11 place-items-center rounded-full hover:bg-[#F7F2E7]" aria-label="Giảm số lượng"><Minus className="size-4" /></button>
                 <output className="w-10 text-center font-semibold" aria-live="polite">{quantity}</output>
-                <button onClick={() => setQuantity(quantity + 1)} className="grid size-11 place-items-center rounded-full hover:bg-[#F7F2E7]" aria-label="Tăng số lượng"><Plus className="size-4" /></button>
+                <button disabled={quantity >= 99} onClick={() => setQuantity(quantity + 1)} className="grid size-11 place-items-center rounded-full hover:bg-[#F7F2E7]" aria-label="Tăng số lượng"><Plus className="size-4" /></button>
               </div>
               <button onClick={clear} className="inline-flex min-h-11 items-center gap-2 text-sm text-[#775E28] hover:text-[#052C20]"><Trash2 className="size-4" /> Xóa</button>
             </div>
             <div className="mt-auto space-y-4 pt-8">
-              <div className="flex items-center justify-between text-lg font-semibold"><span>Tạm tính tiền hàng</span><span>{formatVnd(total)}</span></div>
-              <p className="text-xs leading-5 text-[#6B7C75]">Chưa gồm phí vận chuyển. Phí giao hàng chưa xác nhận.</p>
+              <div className="flex flex-wrap items-center justify-between gap-2 text-lg font-semibold"><span>Tạm tính tiền hàng</span><span>{formatVnd(total)}</span></div>
+              <p className="text-xs leading-5 text-[#587067]">Chưa gồm phí vận chuyển. Phí giao hàng chưa xác nhận.</p>
               <SheetClose asChild><Button asChild className="h-12 w-full rounded-full bg-[#073D2B] text-white"><Link href="/thanh-toan">Tiếp tục thanh toán</Link></Button></SheetClose>
               <SheetClose asChild><Button asChild variant="outline" className="h-11 w-full rounded-full border-[#073D2B]/20 bg-transparent"><Link href="/gio-hang">Xem giỏ hàng</Link></Button></SheetClose>
             </div>

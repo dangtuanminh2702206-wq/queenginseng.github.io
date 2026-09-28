@@ -7,6 +7,10 @@
     "node": ">=22"
   },
   "scripts": {
+    "test": "node --test --test-isolation=none tests/commerce.test.cjs",
+    "typecheck": "tsc --noEmit",
+    "audit:export": "node scripts/audit-export.mjs",
+    "audit:images": "node scripts/audit-images.mjs",
     "dev": "next dev",
     "build": "next build",
     "build:pages": "next build",
@@ -23,6 +27,7 @@
     "tailwind-merge": "3.6.0"
   },
   "devDependencies": {
+    "sharp": "0.35.4",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",

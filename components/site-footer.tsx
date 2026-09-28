@@ -14,7 +14,7 @@ export function SiteFooter() {
         <Link className="footer-link" href={`/san-pham/${g8Product.slug}`}>Sản phẩm G8</Link>
         <Link className="footer-link" href="/#minh-bach">Hồ sơ & minh bạch</Link>
         <Link className="footer-link" href="/#dau-an">Dấu ấn thương hiệu</Link>
-        <Link className="footer-link" href="/tai-khoan/gioi-thieu">Giới thiệu 5% · Bản thử nghiệm</Link></nav>
+        <Link className="footer-link" href="/tai-khoan/gioi-thieu">Giới thiệu · Bản thử nghiệm</Link></nav>
       <div><h2 className="font-semibold text-[#D5C388]">Liên hệ & chính sách</h2><p className="mt-4 text-sm leading-7 text-white/80">Kênh liên hệ bán hàng, chính sách giao hàng và đổi trả đang được cập nhật.</p><p className="mt-3 text-sm leading-7 text-white/80">Website hiện là bản trải nghiệm, chưa tiếp nhận đơn hàng thật.</p></div>
     </div><div className="container-wide border-t border-white/15 py-5 text-xs text-white/75">© 2026 Queen Ginseng Vietnam. Bảo lưu mọi quyền.</div>
   </footer>;

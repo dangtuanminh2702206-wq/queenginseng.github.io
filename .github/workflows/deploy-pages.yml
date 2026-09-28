@@ -28,6 +28,10 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Build static website
         run: npm run build:pages
+      - name: Check types and commerce regressions
+        run: npm run typecheck && npm test
+      - name: Audit exported routes and product data
+        run: npm run audit:export && npm run audit:images
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

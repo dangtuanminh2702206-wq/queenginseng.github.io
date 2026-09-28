@@ -40,6 +40,14 @@ assert.equal(structured.offers.price,480000);
 assert.equal(structured.offers.priceCurrency,'VND');
 assert.equal(structured.offers.availability,undefined);
 assert.equal(structured.sku,undefined);
+assert.equal(structured.aggregateRating,undefined);
+assert.equal(structured.review,undefined);
+for(const route of ['gio-hang','thanh-toan','dang-nhap','dang-ky','tai-khoan','tai-khoan/don-hang','tai-khoan/hoa-hong','tai-khoan/gioi-thieu','tai-khoan/rut-tien','demo-admin']){
+ const html=await readFile(path.join(root,route,'index.html'),'utf8');
+ assert.match(html,/<meta name="robots" content="[^"]*noindex/);
+}
+const sitemap=await readFile(path.join(root,'sitemap.xml'),'utf8');
+assert.doesNotMatch(sitemap,/gio-hang|thanh-toan|tai-khoan|dang-nhap|dang-ky|demo-admin/);
 assert.equal(new Intl.NumberFormat('vi-VN').format(structured.offers.price*2),'960.000');
 assert.equal(errors.length,0,errors.join('\n'));
 console.log(`PASS: ${checked} local asset/route/anchor references; public-copy scan; G8 JSON-LD price/currency; no invented SKU/availability; 2 boxes = 960.000.`);

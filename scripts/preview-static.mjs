@@ -15,5 +15,8 @@ http.createServer(async (req, res) => {
     if ((await stat(file)).isDirectory()) file = path.join(file, 'index.html');
     const body = await readFile(file);
     res.writeHead(200, {'Content-Type':types[path.extname(file)] || 'application/octet-stream', 'Cache-Control':'no-store'}); res.end(body);
-  } catch { res.writeHead(404); res.end('Not found'); }
+  } catch {
+    const html=await readFile(path.join(root,'404.html')).catch(()=>Buffer.from('Không tìm thấy trang'));
+    res.writeHead(404, {'Content-Type':'text/html; charset=utf-8'}); res.end(html);
+  }
 }).listen(4175, '127.0.0.1', () => console.log('Preview: http://127.0.0.1:4175/queenginseng.github.io/'));
